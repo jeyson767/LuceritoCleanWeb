@@ -1,6 +1,6 @@
 import './globals.css'
-import Navbar from '@/components/Navbar' // Importas
-import Footer from '@/components/Footer' // Importas
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -33,7 +33,7 @@ export const metadata = {
   ],
   authors: [{ name: 'Jeyson Coronado' }],
   alternates: {
-    canonical: 'https://lucerito-clean-web-o1qj.vercel.app/inicio', // Cambia por tu dominio real cuando lo tengas
+    canonical: 'https://lucerito-clean-web-o1qj.vercel.app/inicio',
   },
   openGraph: {
     title: 'Lucerito Clean - Expertos en combatir la suciedad',
@@ -51,7 +51,8 @@ export const metadata = {
     locale: 'es_PE',
     type: 'website',
   },
+  // AQUÍ ESTÁ EL CAMBIO IMPORTANTE:
   verification: {
-    google: '893a6ef56114bf32', // El código que sacamos de tu archivo
+    google: '9O2ZSlYnHOi3VXGvXKSWNdiaQs3WbK_ADvjMJHFjh4k',
   },
 }

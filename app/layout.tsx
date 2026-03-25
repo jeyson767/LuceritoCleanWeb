@@ -33,12 +33,12 @@ export const metadata = {
   ],
   authors: [{ name: 'Jeyson Coronado' }],
   alternates: {
-    canonical: 'https://luceritoclean.vercel.app', // Cambia por tu dominio real cuando lo tengas
+    canonical: 'https://lucerito-clean-web-o1qj.vercel.app/inicio', // Cambia por tu dominio real cuando lo tengas
   },
   openGraph: {
     title: 'Lucerito Clean - Expertos en combatir la suciedad',
     description: 'Fórmulas potentes para que tu casa brille como nunca. Calidad garantizada.',
-    url: 'https://luceritoclean.vercel.app',
+    url: 'https://lucerito-clean-web-o1qj.vercel.app/inicio',
     siteName: 'Lucerito Clean',
     images: [
       {
@@ -50,5 +50,8 @@ export const metadata = {
     ],
     locale: 'es_PE',
     type: 'website',
+  },
+  verification: {
+    google: '893a6ef56114bf32', // El código que sacamos de tu archivo
   },
 }

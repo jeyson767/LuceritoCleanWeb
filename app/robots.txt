@@ -1,0 +1,10 @@
+# Autorizar a todos los buscadores (Google, Bing, etc.)
+User-agent: *
+Allow: /
+
+# Evitar que indexen carpetas privadas si las tuvieras (opcional)
+Disallow: /api/
+Disallow: /admin/
+
+# El mapa de tu tesoro (Sitemap)
+Sitemap: https://luceritoclean.vercel.app/sitemap.xml

@@ -33,9 +33,7 @@ export const metadata = {
     'limpieza profunda hogar'
   ],
   authors: [{ name: 'Jeyson Coronado' }],
-  alternates: {
-    canonical: 'https://luceritoclean.com',
-  },
+  
   openGraph: {
     title: 'Lucerito Clean - Expertos en combatir la suciedad',
     description: 'Fórmulas potentes para que tu casa brille como nunca. Calidad garantizada.',
@@ -55,5 +53,8 @@ export const metadata = {
   // AQUÍ ESTÁ EL CAMBIO IMPORTANTE:
   verification: {
     google: '9O2ZSlYnHOi3VXGvXKSWNdiaQs3WbK_ADvjMJHFjh4k',
+  },
+    alternates: {
+    canonical: 'https://luceritoclean.com',
   },
 }

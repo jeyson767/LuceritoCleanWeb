@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
             userAgent: '*',
             allow: '/',
         },
-        sitemap: 'https://lucerito-clean-web-o1qj.vercel.app/sitemap.xml',
+        sitemap: 'https://luceritoclean.com/sitemap.xml',
     }
 }

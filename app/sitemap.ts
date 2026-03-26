@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://lucerito-clean-web-o1qj.vercel.app'
+    const baseUrl = 'https://luceritoclean.com'
 
     return [
         {

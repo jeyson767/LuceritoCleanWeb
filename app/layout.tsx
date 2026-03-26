@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 
 export const metadata = {
-  metadataBase: new URL('https://lucerito-clean-web-o1qj.vercel.app'), // Agrega esto
+  metadataBase: new URL('https://luceritoclean.com'), // Agrega esto
   title: {
     default: 'Lucerito Clean | Productos de Limpieza para Hogar y Empresa en Lima',
     template: '%s | Lucerito Clean'
@@ -34,12 +34,12 @@ export const metadata = {
   ],
   authors: [{ name: 'Jeyson Coronado' }],
   alternates: {
-    canonical: 'https://lucerito-clean-web-o1qj.vercel.app',
+    canonical: 'https://luceritoclean.com',
   },
   openGraph: {
     title: 'Lucerito Clean - Expertos en combatir la suciedad',
     description: 'Fórmulas potentes para que tu casa brille como nunca. Calidad garantizada.',
-    url: 'https://lucerito-clean-web-o1qj.vercel.app',
+    url: 'https://luceritoclean.com',
     siteName: 'Lucerito Clean',
     images: [
       {

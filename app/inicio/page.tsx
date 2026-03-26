@@ -3,7 +3,6 @@ import ProductCard from '@/components/ProductCard'
 import Link from 'next/link'
 
 export default async function InicioPage() {
-    // Traemos los primeros 3 productos habilitados para mostrar algo en el inicio
     const { data: productos } = await supabase
         .from('productos')
         .select('*')
@@ -17,57 +16,81 @@ export default async function InicioPage() {
     ]
 
     return (
-        <div className="space-y-24 pb-20">
+        <div className="space-y-20 md:space-y-32 pb-20 overflow-x-hidden bg-gray-50">
 
             {/* 1. HERO BANNER */}
-            <section className="relative h-[550px] flex items-center justify-center bg-blue-900 overflow-hidden rounded-b-[4rem] shadow-2xl">
+            <section className="relative min-h-[550px] md:h-[700px] flex items-center justify-center bg-blue-900 overflow-hidden rounded-b-[3.5rem] md:rounded-b-[6rem] shadow-2xl px-6 pb-20 md:pb-0">
                 <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-                <div className="relative z-10 text-center px-6">
-                    <h1 className="text-6xl md:text-8xl font-black text-white mb-6 tracking-tighter uppercase leading-none">
-                        Lucerito <span className="text-cyan-400 block">Clean</span>
+
+                <div className="relative z-10 text-center max-w-4xl mx-auto">
+                    <h1 className="text-6xl md:text-9xl font-black text-white mb-8 tracking-tighter uppercase leading-[0.85]">
+                        Lucerito <span className="text-cyan-400 block md:inline-block italic">Clean</span>
                     </h1>
-                    <p className="text-xl md:text-2xl text-blue-100 font-light mb-10 italic max-w-xl mx-auto">
+                    <p className="text-lg md:text-2xl text-blue-100 font-medium mb-12 italic max-w-xl mx-auto leading-tight">
                         "Brillo impecable y pureza absoluta en cada rincón de tu hogar."
                     </p>
                     <Link
                         href="/productos"
-                        className="bg-cyan-500 text-white font-black px-12 py-5 rounded-3xl hover:bg-white hover:text-blue-900 transition-all shadow-xl uppercase tracking-widest text-sm"
+                        className="inline-block bg-cyan-500 text-white font-black px-12 py-5 rounded-2xl md:rounded-3xl hover:bg-white hover:text-blue-900 transition-all shadow-xl uppercase tracking-widest text-xs md:text-sm active:scale-95"
                     >
                         Ver Catálogo Real
                     </Link>
                 </div>
             </section>
 
-            {/* 2. SECCIÓN PRODUCTOS DESTACADOS */}
-            <section className="max-w-7xl mx-auto px-6">
-                <div className="flex items-center justify-between mb-12">
-                    <h2 className="text-4xl font-black text-blue-900 uppercase tracking-tighter">Nuestros Favoritos</h2>
-                    <Link href="/productos" className="text-cyan-600 font-bold hover:underline">Ver todo →</Link>
+            {/* 2. PRODUCTOS DESTACADOS */}
+            <section className="max-w-7xl mx-auto px-6 pt-12 md:pt-0">
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 gap-6">
+                    <div>
+                        <h2 className="text-4xl md:text-6xl font-black text-blue-900 uppercase tracking-tighter leading-none">
+                            Nuestros <br className="md:hidden" /> Favoritos
+                        </h2>
+                        <div className="h-2 w-24 bg-cyan-500 rounded-full mt-4"></div>
+                    </div>
+                    <Link href="/productos" className="text-cyan-600 font-black uppercase text-xs tracking-[0.2em] hover:text-blue-900 transition-colors border-b-2 border-cyan-100 pb-1">
+                        Ver todo el catálogo →
+                    </Link>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-14">
                     {productos?.map((p) => (
-                        <ProductCard key={p.id} producto={p} />
+                        <ProductCard
+                            key={p.id}
+                            producto={p}
+                            /* 
+                                ✅ SOLUCIÓN AL ERROR: 
+                                Como estamos en Inicio (Server Component), 
+                                redirigimos a Productos donde vive el carrito.
+                            */
+                           
+                        />
                     ))}
                 </div>
             </section>
 
-            {/* 3. SECCIÓN DE TESTIMONIOS (Innovadora) */}
-            <section className="bg-blue-50 py-24 border-y border-blue-100">
-                <div className="max-w-7xl mx-auto px-6 text-center">
-                    <span className="text-cyan-600 font-black uppercase tracking-[0.4em] text-xs">Lo que dicen de nosotros</span>
-                    <h2 className="text-5xl font-black text-blue-900 mt-4 mb-16 tracking-tighter">CLIENTES FELICES ✨</h2>
+            {/* 3. TESTIMONIOS */}
+            <section className="bg-white py-24 md:py-32 border-y border-gray-100 relative">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="text-center mb-20">
+                        <span className="text-cyan-600 font-black uppercase tracking-[0.4em] text-[10px] md:text-xs">Lo que dicen en Lima</span>
+                        <h2 className="text-5xl md:text-7xl font-black text-blue-900 mt-6 tracking-tighter uppercase leading-none">CLIENTES FELICES ✨</h2>
+                    </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
                         {testimonios.map((t, idx) => (
-                            <div key={idx} className="bg-white p-10 rounded-[3rem] shadow-sm border border-blue-100 relative group hover:shadow-xl transition-all duration-500">
-                                <div className="text-cyan-400 text-5xl absolute -top-6 left-10">“</div>
-                                <p className="text-gray-600 italic text-lg leading-relaxed mb-8 relative z-10">
+                            <div key={idx} className="bg-gray-50 p-10 rounded-[3rem] md:rounded-[4rem] border border-gray-100 relative group hover:bg-white hover:shadow-2xl transition-all duration-500">
+                                <div className="text-cyan-400 text-7xl absolute -top-4 left-8 opacity-30 font-serif">“</div>
+                                <p className="text-gray-600 italic text-lg md:text-xl leading-relaxed mb-10 relative z-10 pt-4">
                                     {t.text}
                                 </p>
-                                <div className="border-t border-gray-50 pt-6">
-                                    <h4 className="font-black text-blue-900 uppercase text-sm tracking-widest">{t.name}</h4>
-                                    <span className="text-xs text-cyan-500 font-bold">{t.role}</span>
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-12 bg-blue-900 rounded-full flex items-center justify-center font-black text-white text-sm">
+                                        {t.name.charAt(0)}
+                                    </div>
+                                    <div>
+                                        <h4 className="font-black text-blue-900 uppercase text-xs tracking-widest">{t.name}</h4>
+                                        <span className="text-[10px] text-cyan-500 font-bold uppercase tracking-widest">{t.role}</span>
+                                    </div>
                                 </div>
                             </div>
                         ))}
@@ -75,17 +98,22 @@ export default async function InicioPage() {
                 </div>
             </section>
 
-            {/* 4. BANNER DE CIERRE (CTA) */}
-            <section className="max-w-5xl mx-auto px-6">
-                <div className="bg-gradient-to-r from-blue-900 to-cyan-600 p-12 rounded-[4rem] text-center shadow-2xl">
-                    <h2 className="text-4xl font-black text-white mb-6 uppercase tracking-tight">¿Listo para que tu negocio brille?</h2>
-                    <p className="text-blue-100 mb-10 text-lg">Contáctanos hoy mismo para pedidos por mayor con precios especiales.</p>
-                    <Link
-                        href="/contactanos"
-                        className="bg-white text-blue-900 font-black px-10 py-4 rounded-2xl hover:bg-yellow-400 transition-all uppercase text-sm tracking-widest shadow-lg"
-                    >
-                        Hablemos ahora
-                    </Link>
+            {/* 4. CTA BANNER */}
+            <section className="max-w-6xl mx-auto px-6 pb-12">
+                <div className="bg-blue-900 p-12 md:p-24 rounded-[4rem] md:rounded-[6rem] text-center shadow-2xl relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 rounded-full -mr-20 -mt-20 blur-3xl"></div>
+
+                    <div className="relative z-10">
+                        <h2 className="text-4xl md:text-6xl font-black text-white mb-8 uppercase tracking-tighter leading-tight">
+                            ¿Listo para que <br /> tu hogar brille?
+                        </h2>
+                        <Link
+                            href="/contactanos"
+                            className="inline-block bg-white text-blue-900 font-black px-14 py-6 rounded-2xl hover:bg-cyan-400 hover:text-white transition-all uppercase text-xs tracking-[0.3em] shadow-xl"
+                        >
+                            Hablemos ahora 📱
+                        </Link>
+                    </div>
                 </div>
             </section>
 

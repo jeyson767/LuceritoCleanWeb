@@ -15,6 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 
 export const metadata = {
+  metadataBase: new URL('https://lucerito-clean-web-o1qj.vercel.app'), // Agrega esto
   title: {
     default: 'Lucerito Clean | Productos de Limpieza para Hogar y Empresa en Lima',
     template: '%s | Lucerito Clean'

@@ -6,15 +6,16 @@ interface ProductProps {
         categoria: string;
         imagen_url: string;
         es_oferta?: boolean;
-    }
+    };
+    onConsultar?: () => void; // 👈 Agregamos esta prop para conectar con el carrito
 }
 
-export default function ProductCard({ producto }: ProductProps) {
+export default function ProductCard({ producto, onConsultar }: ProductProps) {
     // 🛡️ Si el producto no carga bien, no rompe la página
     if (!producto) return null;
 
     return (
-        <div className="group bg-white rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden">
+        <div className="group bg-white rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full">
             <div className="aspect-square bg-gray-50 relative flex items-center justify-center overflow-hidden">
                 {producto.imagen_url ? (
                     <img
@@ -29,8 +30,9 @@ export default function ProductCard({ producto }: ProductProps) {
                     </div>
                 )}
 
+                {/* Etiquetas Superiores */}
                 <div className="absolute top-4 left-4">
-                    <span className="bg-white/90 backdrop-blur-md text-blue-800 text-[10px] font-black px-4 py-1.5 rounded-full shadow-sm uppercase">
+                    <span className="bg-white/90 backdrop-blur-md text-blue-800 text-[10px] font-black px-4 py-1.5 rounded-full shadow-sm uppercase tracking-tighter">
                         {producto.categoria}
                     </span>
                 </div>
@@ -44,22 +46,28 @@ export default function ProductCard({ producto }: ProductProps) {
                 )}
             </div>
 
-            <div className="p-7">
-                <h2 className="text-xl font-bold text-gray-800 group-hover:text-cyan-600 transition-colors">
+            <div className="p-7 flex flex-col flex-1">
+                <h2 className="text-xl font-bold text-gray-800 group-hover:text-cyan-600 transition-colors uppercase tracking-tighter">
                     {producto.nombre}
                 </h2>
-                <p className="text-gray-500 text-sm mt-3 line-clamp-2 min-h-[40px] leading-relaxed">
+                <p className="text-gray-500 text-sm mt-3 line-clamp-2 min-h-[40px] leading-relaxed flex-1">
                     {producto.descripcion}
                 </p>
 
                 <div className="mt-8">
-                    <a
-                        href={`https://wa.me/977596410?text=Hola Lucerito Clean, me interesa: ${producto.nombre}`}
-                        target="_blank"
-                        className="flex items-center justify-center gap-2 w-full bg-blue-950 text-white font-bold py-4 rounded-2xl hover:bg-cyan-500 transition-all duration-300 shadow-lg shadow-blue-100 uppercase text-xs tracking-widest"
+                    {/* BOTÓN DIDÁCTICO: Ahora activa el carrito */}
+                    <button
+                        onClick={onConsultar}
+                        className="flex items-center justify-center gap-2 w-full bg-blue-950 text-white font-black py-4 rounded-2xl hover:bg-cyan-500 transition-all duration-300 shadow-lg shadow-blue-100 uppercase text-[10px] tracking-[0.2em] active:scale-95"
                     >
-                        <span>Consultar</span>
-                    </a>
+                        <span>Añadir a consulta</span>
+                        <span className="text-lg">🛒</span>
+                    </button>
+
+                    {/* Link de ayuda rápida (opcional, debajo del botón principal) */}
+                    <p className="text-[9px] text-center text-gray-400 mt-3 font-bold uppercase tracking-widest">
+                        Cotización inmediata para Ate
+                    </p>
                 </div>
             </div>
         </div>
